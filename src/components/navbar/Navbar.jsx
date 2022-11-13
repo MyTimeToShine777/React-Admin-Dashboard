@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./navbar.scss";
 import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 import LanguageTwoToneIcon from "@mui/icons-material/LanguageTwoTone";
@@ -7,8 +7,11 @@ import FullscreenExitTwoToneIcon from "@mui/icons-material/FullscreenExitTwoTone
 import NotificationsActiveTwoToneIcon from "@mui/icons-material/NotificationsActiveTwoTone";
 import QuestionAnswerTwoToneIcon from "@mui/icons-material/QuestionAnswerTwoTone";
 import ListAltTwoToneIcon from "@mui/icons-material/ListAltTwoTone";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
+
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -22,7 +25,10 @@ const Navbar = () => {
             English
           </div>
           <div className="item">
-            <DarkModeTwoToneIcon className="icon" />
+            <DarkModeTwoToneIcon
+              className="icon"
+              onClick={() => dispatch({ type: "TOGGLE" })}
+            />
           </div>
           <div className="item">
             <FullscreenExitTwoToneIcon className="icon" />
